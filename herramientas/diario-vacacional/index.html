@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f4e5f">
+<title>Diario vacacional · CABINA-  ECOLÓGICA</title>
+<style>
+  :root{
+    --bg:#f6f3ee; --card:#ffffff; --ink:#1d2a30; --muted:#5f6d73;
+    --pri:#1f4e5f; --pri2:#2f7a8a; --warm:#c8743c; --ok:#3c8a5a; --bad:#b0413e;
+    --line:#e4ded4; --r:14px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  header{background:var(--pri);color:#fff;padding:18px 18px 22px}
+  header h1{margin:0;font-size:1.25rem;letter-spacing:.2px}
+  header p{margin:4px 0 0;opacity:.85;font-size:.9rem}
+  main{max-width:640px;margin:0 auto;padding:14px 14px 90px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    padding:16px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .card h2{margin:0 0 6px;font-size:1.08rem;color:var(--pri)}
+  .card h3{margin:14px 0 4px;font-size:1rem}
+  .hint{color:var(--muted);font-size:.9rem;margin:2px 0 10px}
+  label{display:block}
+  input[type=text],textarea{width:100%;padding:11px 12px;border:1px solid var(--line);
+    border-radius:10px;font:inherit;background:#fffdfa}
+  textarea{min-height:90px;resize:vertical}
+  button{font:inherit;border:0;border-radius:12px;padding:12px 16px;cursor:pointer;
+    background:var(--pri);color:#fff;font-weight:600}
+  button.sec{background:#e9eef0;color:var(--pri)}
+  button.warm{background:var(--warm)}
+  button.ok{background:var(--ok)}
+  button.danger{background:#f6e3e2;color:var(--bad)}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .full{width:100%}
+  .hidden{display:none!important}
+  /* sliders */
+  .scale{margin:14px 0}
+  .scale .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .scale .val{font-weight:700;color:var(--pri);min-width:2.2em;text-align:right;font-size:1.1rem}
+  .scale .val.unset{color:#b9b2a6;font-weight:500;font-size:.85rem}
+  input[type=range]{width:100%;accent-color:var(--pri2);height:28px}
+  .ends{display:flex;justify-content:space-between;color:var(--muted);font-size:.8rem}
+  /* segmented */
+  .seg{display:flex;gap:8px}
+  .seg button{flex:1;background:#eef1f2;color:var(--ink);font-weight:500}
+  .seg button.on{background:var(--pri2);color:#fff}
+  /* checks */
+  .checks{display:grid;grid-template-columns:1fr;gap:8px}
+  @media(min-width:520px){.checks{grid-template-columns:1fr 1fr}}
+  .chk{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);
+    border-radius:10px;background:#fffdfa}
+  .chk input{width:20px;height:20px;margin-top:2px;accent-color:var(--pri2);flex:none}
+  .chk.on{border-color:var(--pri2);background:#eef6f7}
+  /* recorder */
+  .rec{border:1px dashed #cfc6b8;border-radius:12px;padding:12px;margin-top:8px;background:#fffcf7}
+  .rec .time{font-variant-numeric:tabular-nums;font-weight:700;font-size:1.15rem}
+  .rec .dot{width:10px;height:10px;border-radius:50%;background:var(--bad);display:inline-block;
+    animation:pulse 1s infinite}
+  @keyframes pulse{50%{opacity:.25}}
+  .rec audio{width:100%;margin-top:8px}
+  .guide{margin:6px 0 0;padding-left:20px;color:var(--muted);font-size:.92rem}
+  .tabs{display:flex;gap:6px;margin-top:8px}
+  .tabs button{padding:7px 12px;font-size:.88rem;background:#eef1f2;color:var(--ink);font-weight:500}
+  .tabs button.on{background:var(--ink);color:#fff}
+  .pill{display:inline-block;background:#eef1f2;border-radius:999px;padding:2px 10px;font-size:.8rem;color:var(--muted)}
+  .pill.sent{background:#e4f1e8;color:var(--ok)}
+  .pill.new{background:#fbeadf;color:var(--warm)}
+  .entry{display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:10px 0;border-bottom:1px solid var(--line)}
+  .entry:last-child{border-bottom:0}
+  .entry small{color:var(--muted)}
+  .status{padding:10px 12px;border-radius:10px;font-size:.92rem;margin-top:10px}
+  .status.info{background:#eef6f7;color:var(--pri)}
+  .status.warn{background:#fbeadf;color:#7a4217}
+  .status.err{background:#f6e3e2;color:var(--bad)}
+  .bigstat{font-size:1.6rem;font-weight:700;color:var(--pri)}
+  nav.bottom{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);
+    display:flex;padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:8px}
+  nav.bottom button{flex:1;background:transparent;color:var(--muted);font-weight:600;padding:10px 4px}
+  nav.bottom button.on{color:var(--pri);background:#eef1f2}
+  .consent p{margin:8px 0}
+  .req{color:var(--bad)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Diario vacacional</h1>
+  <p>CABINA-  ECOLÓGICA · Laboratorio de Cognición Artificial, CINCCo-UAEM</p>
+</header>
+
+<main>
+
+<!-- ================= CONSENTIMIENTO / INICIO ================= -->
+<section id="v-setup" class="hidden">
+  <div class="card consent">
+    <h2>Antes de empezar</h2>
+    <p>Gracias por acompañarnos en este estudio. Durante las vacaciones te pediremos una entrada <b>cada 2 o 3 días</b> (unos 5 minutos): unas escalas rápidas y dos relatos breves en audio sobre lo más bonito y lo más difícil que viviste.</p>
+    <p><b>Tu participación es voluntaria.</b> Puedes saltarte preguntas o retirarte cuando quieras, sin tener que dar explicaciones.</p>
+    <p>Todo queda guardado <b>solo en este teléfono</b> hasta que tú decidas enviarlo. Cuando lo envíes, el archivo llega por WhatsApp a la responsable del estudio y se identifica con un código, no con tu nombre. Si en algún relato mencionas a otras personas, no hace falta que digas sus nombres.</p>
+    <label class="chk" style="margin-top:12px"><input type="checkbox" id="c-ok"><span>He leído lo anterior y acepto participar.</span></label>
+    <h3>Tu código de participante</h3>
+    <p class="hint">Usa el código que te asignaron (por ejemplo, CAB-07). Si no tienes uno, usa tus iniciales y los dos últimos dígitos de tu año de nacimiento.</p>
+    <input type="text" id="c-code" placeholder="CAB-07" autocomplete="off" autocapitalize="characters">
+    <div class="row" style="margin-top:14px"><button id="c-go" class="full">Comenzar</button></div>
+    <div id="c-msg"></div>
+  </div>
+</section>
+
+<!-- ================= INICIO ================= -->
+<section id="v-home" class="hidden">
+  <div class="card">
+    <h2>Hola, <span id="h-code"></span></h2>
+    <p class="hint" id="h-last"></p>
+    <div class="row" style="justify-content:space-between">
+      <div><div class="bigstat" id="h-count">0</div><small class="hint">entradas registradas</small></div>
+      <div><div class="bigstat" id="h-pend">0</div><small class="hint">sin enviar</small></div>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <button id="h-new" class="full">+ Nueva entrada</button>
+    </div>
+    <div id="h-nudge"></div>
+  </div>
+
+  <div class="card">
+    <h2>Recordatorios</h2>
+    <p class="hint">Agrega a tu calendario un aviso cada 2 días durante las vacaciones.</p>
+    <button class="sec full" id="h-ics">Agregar recordatorios a mi calendario</button>
+  </div>
+</section>
+
+<!-- ================= NUEVA ENTRADA ================= -->
+<section id="v-entry" class="hidden">
+  <div class="card">
+    <h2>1 · ¿Cómo has estado?</h2>
+    <p class="hint">Piensa en el tiempo <b id="e-since">desde tu última entrada</b>. Mueve cada barra; no hay respuestas correctas.</p>
+
+    <div class="scale" data-k="estres">
+      <div class="top"><span>Nivel de estrés general</span><span class="val unset">sin responder</span></div>
+      <input type="range" min="0" max="10" step="1" value="5">
+      <div class="ends"><span>0 · nada</span><span>10 · muchísimo</span></div>
+    </div>
+    <div class="scale" data-k="sueno">
+      <div class="top"><span>Calidad de tu sueño</span><span class="val unset">sin responder</span></div>
+      <input type="range" min="0" max="10" step="1" value="5">
+      <div class="ends"><span>0 · pésima</span><span>10 · excelente</span></div>
+    </div>
+    <div class="scale" data-k="descanso">
+      <div class="top"><span>¿Qué tan descansada/o te sientes?</span><span class="val unset">sin responder</span></div>
+      <input type="range" min="0" max="10" step="1" value="5">
+      <div class="ends"><span>0 · agotada/o</span><span>10 · renovada/o</span></div>
+    </div>
+    <div class="scale" data-k="animo">
+      <div class="top"><span>Estado de ánimo</span><span class="val unset">sin responder</span></div>
+      <input type="range" min="0" max="10" step="1" value="5">
+      <div class="ends"><span>0 · muy mal</span><span>10 · muy bien</span></div>
+    </div>
+
+    <h3>¿Tuviste que “tragarte” algo (callar lo que pensabas o sentías) para evitar un conflicto?</h3>
+    <div class="seg" id="e-trag">
+      <button type="button" data-v="si">Sí</button>
+      <button type="button" data-v="no">No</button>
+    </div>
+    <div class="scale hidden" data-k="tragarse_intensidad" id="e-tragint">
+      <div class="top"><span>¿Con qué intensidad?</span><span class="val unset">sin responder</span></div>
+      <input type="range" min="0" max="10" step="1" value="5">
+      <div class="ends"><span>0 · apenas</span><span>10 · muchísimo</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2 · Lo más bonito</h2>
+    <p class="hint">Cuéntanos lo más bonito que viviste en este tiempo. Hasta 2 minutos.</p>
+    <div id="r-bonito"></div>
+  </div>
+
+  <div class="card">
+    <h2>3 · Lo más difícil y cómo lo afrontaste</h2>
+    <p class="hint">Hasta 3 minutos. Puedes guiarte con estas preguntas:</p>
+    <ul class="guide">
+      <li>¿Qué pasó?</li>
+      <li>¿Qué sentiste, también en el cuerpo (pecho, estómago, mandíbula…)?</li>
+      <li>¿Qué hiciste? ¿Lo dijiste, te lo guardaste, lo hablaste después?</li>
+    </ul>
+    <div id="r-dificil"></div>
+  </div>
+
+  <div class="card">
+    <h2>4 · ¿Qué hiciste para afrontarlo?</h2>
+    <p class="hint">Marca todo lo que aplique.</p>
+    <div class="checks" id="e-coping"></div>
+    <label style="margin-top:10px">Otra cosa:
+      <input type="text" id="e-otro" placeholder="(opcional)">
+    </label>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <button class="sec" id="e-cancel">Cancelar</button>
+      <button class="ok" id="e-save" style="flex:1">Guardar entrada</button>
+    </div>
+    <div id="e-msg"></div>
+  </div>
+</section>
+
+<!-- ================= ENVIAR ================= -->
+<section id="v-send" class="hidden">
+  <div class="card">
+    <h2>Enviar mis entradas</h2>
+    <p class="hint">Se arma un archivo .zip con tus entradas y audios. Al tocar <b>Enviar por WhatsApp</b> se abre el menú para compartir: elige <b>WhatsApp</b> y luego el contacto de la responsable del estudio (<b>777 791 1872</b>).</p>
+    <div class="tabs" id="s-mode">
+      <button type="button" data-v="pend" class="on">Solo las nuevas</button>
+      <button type="button" data-v="all">Todas</button>
+    </div>
+    <p class="hint" id="s-info" style="margin-top:10px"></p>
+    <div class="row" style="margin-top:6px">
+      <button class="ok full" id="s-share">Enviar por WhatsApp</button>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button class="sec full" id="s-dl">Solo descargar el .zip</button>
+    </div>
+    <div id="s-msg"></div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">¿Aún no tienes el número guardado?</h3>
+    <p class="hint">Abre el chat primero, guarda el contacto y vuelve aquí para enviar el archivo.</p>
+    <button class="sec full" id="s-chat">Abrir chat de WhatsApp</button>
+  </div>
+</section>
+
+<!-- ================= HISTORIAL ================= -->
+<section id="v-list" class="hidden">
+  <div class="card">
+    <h2>Mis entradas</h2>
+    <div id="l-list"></div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">Código de participante</h3>
+    <p class="hint">Actual: <b id="l-code"></b></p>
+    <button class="sec" id="l-chcode">Cambiar código</button>
+  </div>
+</section>
+
+</main>
+
+<nav class="bottom hidden" id="nav">
+  <button data-v="home" class="on">Inicio</button>
+  <button data-v="entry">Nueva</button>
+  <button data-v="send">Enviar</button>
+  <button data-v="list">Historial</button>
+</nav>
+
+<script>
+"use strict";
+/* ================= CONFIGURACIÓN ================= */
+const CFG = {
+  version: "1.0",
+  estudio: "CABINA-  ECOLÓGICA · Diario vacacional (EEG + HRV pre/post)",
+  whatsapp: "527777911872",          // +52 777 791 1872
+  maxSeg: { bonito: 120, dificil: 180 },
+  recordatorios: { cadaDias: 2, veces: 12, hora: "20:00" },
+  afrontamiento: [
+    ["hable",        "Hablé con alguien de lo que pasó"],
+    ["guarde",       "Me lo guardé / no dije nada"],
+    ["exprese",      "Dije lo que sentía en el momento"],
+    ["aleje",        "Me alejé un rato de la situación"],
+    ["respire",      "Respiré o hice algo para relajarme"],
+    ["ejercicio",    "Hice ejercicio o caminé"],
+    ["espiritual",   "Recé o tuve un momento espiritual"],
+    ["distraje",     "Me distraje (series, celular, juegos…)"],
+    ["humor",        "Le encontré el lado chistoso"],
+    ["reinterprete", "Traté de verlo desde otra perspectiva"],
+    ["resolvi",      "Hice algo concreto para resolverlo"],
+    ["comer",        "Comí, bebí o fumé más de lo habitual"]
+  ]
+};
+
+/* ================= ALMACENAMIENTO (IndexedDB) ================= */
+const DB = (() => {
+  let dbp;
+  function open(){
+    if(dbp) return dbp;
+    dbp = new Promise((res, rej) => {
+      const r = indexedDB.open("diario_cabina", 1);
+      r.onupgradeneeded = () => {
+        const db = r.result;
+        db.createObjectStore("entradas", {keyPath:"id"});
+        db.createObjectStore("config");
+      };
+      r.onsuccess = () => res(r.result);
+      r.onerror = () => rej(r.error);
+    });
+    return dbp;
+  }
+  async function tx(store, mode, fn){
+    const db = await open();
+    return new Promise((res, rej) => {
+      const t = db.transaction(store, mode);
+      const s = t.objectStore(store);
+      const out = fn(s);
+      t.oncomplete = () => res(out && "result" in out ? out.result : out);
+      t.onerror = () => rej(t.error);
+      t.onabort = () => rej(t.error || new Error("Transacción abortada"));
+    });
+  }
+  return {
+    get:  (k)    => tx("config","readonly", s => s.get(k)),
+    set:  (k,v)  => tx("config","readwrite", s => s.put(v,k)),
+    all:  ()     => tx("entradas","readonly", s => s.getAll()),
+    put:  (e)    => tx("entradas","readwrite", s => s.put(e)),
+    del:  (id)   => tx("entradas","readwrite", s => s.delete(id))
+  };
+})();
+
+/* ================= UTILIDADES ================= */
+const $ = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+const pad = n => String(n).padStart(2,"0");
+function fmtFecha(iso){
+  const d = new Date(iso);
+  return d.toLocaleDateString("es-MX",{weekday:"short",day:"numeric",month:"short"}) +
+         " · " + pad(d.getHours()) + ":" + pad(d.getMinutes());
+}
+function fmtSeg(s){ s = Math.max(0, Math.round(s)); return Math.floor(s/60) + ":" + pad(s%60); }
+function localISO(d=new Date()){
+  const off = -d.getTimezoneOffset(), sg = off>=0?"+":"-", a=Math.abs(off);
+  return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())+"T"+pad(d.getHours())+":"+
+    pad(d.getMinutes())+":"+pad(d.getSeconds())+sg+pad(Math.floor(a/60))+":"+pad(a%60);
+}
+function stamp(d=new Date()){ return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+"_"+pad(d.getHours())+pad(d.getMinutes()); }
+function msg(el, text, kind="info"){ el.innerHTML = text ? `<div class="status ${kind}">${text}</div>` : ""; }
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function safeCode(c){ return (c||"SINCODIGO").toUpperCase().replace(/[^A-Z0-9_-]/g,"").slice(0,24) || "SINCODIGO"; }
+function extFor(mime){ return /mp4|m4a|aac/.test(mime) ? "m4a" : /ogg/.test(mime) ? "ogg" : /wav/.test(mime) ? "wav" : "webm"; }
+
+/* ================= ZIP (sin compresión, sin dependencias) ================= */
+const CRC_T = (() => { const t = new Uint32Array(256);
+  for(let i=0;i<256;i++){ let c=i; for(let k=0;k<8;k++) c = c&1 ? 0xEDB88320^(c>>>1) : c>>>1; t[i]=c>>>0; }
+  return t; })();
+function crc32(u8){ let c = 0xFFFFFFFF; for(let i=0;i<u8.length;i++) c = CRC_T[(c^u8[i])&0xFF]^(c>>>8); return (c^0xFFFFFFFF)>>>0; }
+function makeZip(files){ // files: [{name, data:Uint8Array}]
+  const enc = new TextEncoder(), parts = [], central = [];
+  const d = new Date();
+  const dosT = (d.getHours()<<11)|(d.getMinutes()<<5)|(d.getSeconds()>>1);
+  const dosD = ((d.getFullYear()-1980)<<9)|((d.getMonth()+1)<<5)|d.getDate();
+  let offset = 0;
+  for(const f of files){
+    const name = enc.encode(f.name), data = f.data, crc = crc32(data);
+    const lh = new DataView(new ArrayBuffer(30));
+    lh.setUint32(0,0x04034b50,true); lh.setUint16(4,20,true); lh.setUint16(6,0x0800,true);
+    lh.setUint16(8,0,true); lh.setUint16(10,dosT,true); lh.setUint16(12,dosD,true);
+    lh.setUint32(14,crc,true); lh.setUint32(18,data.length,true); lh.setUint32(22,data.length,true);
+    lh.setUint16(26,name.length,true); lh.setUint16(28,0,true);
+    parts.push(lh.buffer, name, data);
+    const ch = new DataView(new ArrayBuffer(46));
+    ch.setUint32(0,0x02014b50,true); ch.setUint16(4,20,true); ch.setUint16(6,20,true);
+    ch.setUint16(8,0x0800,true); ch.setUint16(10,0,true); ch.setUint16(12,dosT,true); ch.setUint16(14,dosD,true);
+    ch.setUint32(16,crc,true); ch.setUint32(20,data.length,true); ch.setUint32(24,data.length,true);
+    ch.setUint16(28,name.length,true); ch.setUint32(42,offset,true);
+    central.push(ch.buffer, name);
+    offset += 30 + name.length + data.length;
+  }
+  const cdSize = central.reduce((a,b)=>a+(b.byteLength ?? b.length),0);
+  const end = new DataView(new ArrayBuffer(22));
+  end.setUint32(0,0x06054b50,true); end.setUint16(8,files.length,true); end.setUint16(10,files.length,true);
+  end.setUint32(12,cdSize,true); end.setUint32(16,offset,true);
+  return new Blob([...parts, ...central, end.buffer], {type:"application/zip"});
+}
+
+/* ================= GRABADORA ================= */
+function pickMime(){
+  if(!window.MediaRecorder) return "";
+  for(const m of ["audio/webm;codecs=opus","audio/mp4","audio/ogg;codecs=opus","audio/webm"])
+    if(MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m)) return m;
+  return "";
+}
+function Recorder(host, key, maxSeg){
+  const st = { blob:null, mime:"", dur:0, texto:"", modo:"audio" };
+  host.innerHTML = `
+    <div class="tabs"><button type="button" data-m="audio" class="on">🎙 Grabar audio</button><button type="button" data-m="texto">✍ Prefiero escribir</button></div>
+    <div class="rec" data-p="audio">
+      <div class="row" style="justify-content:space-between">
+        <span class="time"><span class="dot hidden"></span> <span data-t>0:00</span> <small class="hint">/ ${fmtSeg(maxSeg)}</small></span>
+        <div class="row">
+          <button type="button" class="warm" data-a="rec">Grabar</button>
+          <button type="button" class="danger hidden" data-a="stop">Detener</button>
+        </div>
+      </div>
+      <audio controls class="hidden"></audio>
+      <div data-msg></div>
+    </div>
+    <div class="hidden" data-p="texto" style="margin-top:8px"><textarea placeholder="Escribe aquí tu relato…"></textarea></div>`;
+  const tBtns = $$(".tabs button", host), pA = $('[data-p="audio"]',host), pT = $('[data-p="texto"]',host);
+  const bRec = $('[data-a="rec"]',host), bStop = $('[data-a="stop"]',host), tEl = $("[data-t]",host),
+        dot = $(".dot",host), aud = $("audio",host), mEl = $("[data-msg]",host), ta = $("textarea",host);
+  let mr=null, stream=null, chunks=[], t0=0, timer=null;
+  tBtns.forEach(b => b.onclick = () => {
+    if(mr && mr.state==="recording") return;
+    st.modo = b.dataset.m; tBtns.forEach(x=>x.classList.toggle("on", x===b));
+    pA.classList.toggle("hidden", st.modo!=="audio"); pT.classList.toggle("hidden", st.modo!=="texto");
+  });
+  ta.oninput = () => st.texto = ta.value;
+  bRec.onclick = async () => {
+    msg(mEl,"");
+    if(!navigator.mediaDevices || !window.MediaRecorder){
+      msg(mEl,"Este navegador no permite grabar audio. Usa Chrome actualizado o la opción “Prefiero escribir”.","err"); return; }
+    if(st.blob && !confirm("¿Volver a grabar? Se borrará la grabación anterior.")) return;
+    try{ stream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}}); }
+    catch(e){ msg(mEl,"No se pudo usar el micrófono. Revisa que hayas dado permiso al navegador.","err"); return; }
+    const mime = pickMime();
+    try{ mr = new MediaRecorder(stream, mime ? {mimeType:mime, audioBitsPerSecond:32000} : {}); }
+    catch(e){ mr = new MediaRecorder(stream); }
+    chunks = [];
+    mr.ondataavailable = e => { if(e.data && e.data.size) chunks.push(e.data); };
+    mr.onstop = () => {
+      clearInterval(timer); stream.getTracks().forEach(t=>t.stop());
+      st.mime = (mr.mimeType || mime || "audio/webm").split(";")[0];
+      st.blob = new Blob(chunks, {type: st.mime});
+      st.dur = Math.round((Date.now()-t0)/1000);
+      aud.src = URL.createObjectURL(st.blob); aud.classList.remove("hidden");
+      dot.classList.add("hidden"); bStop.classList.add("hidden");
+      bRec.classList.remove("hidden"); bRec.textContent = "Volver a grabar";
+      tEl.textContent = fmtSeg(st.dur);
+      msg(mEl, "Grabación lista ✓ Puedes escucharla antes de guardar.", "info");
+    };
+    mr.start(1000); t0 = Date.now();
+    dot.classList.remove("hidden"); bRec.classList.add("hidden"); bStop.classList.remove("hidden"); aud.classList.add("hidden");
+    timer = setInterval(() => {
+      const s = (Date.now()-t0)/1000; tEl.textContent = fmtSeg(s);
+      if(s >= maxSeg){ mr.stop(); }
+    }, 250);
+  };
+  bStop.onclick = () => { if(mr && mr.state==="recording") mr.stop(); };
+  return {
+    state: st,
+    isRecording: () => !!(mr && mr.state==="recording"),
+    hasContent: () => (st.modo==="audio" && st.blob) || (st.modo==="texto" && st.texto.trim().length>0)
+  };
+}
+
+/* ================= APLICACIÓN ================= */
+let FLASH = null, CODE = null, recB = null, recD = null, scaleSet = {}, tragarse = null, sendMode = "pend";
+
+function show(v){
+  ["setup","home","entry","send","list"].forEach(x => $("#v-"+x).classList.toggle("hidden", x!==v));
+  $("#nav").classList.toggle("hidden", v==="setup");
+  $$("#nav button").forEach(b => b.classList.toggle("on", b.dataset.v===v));
+  window.scrollTo(0,0);
+  if(v==="home") renderHome();
+  if(v==="entry") resetEntry();
+  if(v==="send") renderSend();
+  if(v==="list") renderList();
+}
+
+async function sortedEntries(){ return (await DB.all()).sort((a,b)=> a.fecha_iso < b.fecha_iso ? -1 : 1); }
+function diasDesde(iso){ return iso ? Math.floor((Date.now()-new Date(iso).getTime())/86400000) : null; }
+
+async function renderHome(){
+  const es = await sortedEntries();
+  $("#h-code").textContent = CODE;
+  $("#h-count").textContent = es.length;
+  $("#h-pend").textContent = es.filter(e=>!e.enviada).length;
+  const last = es[es.length-1];
+  const nud = $("#h-nudge");
+  if(!last){ $("#h-last").textContent = "Aún no tienes entradas. ¡Empieza cuando quieras!"; msg(nud,""); }
+  if(!last) return;
+  const d = diasDesde(last.fecha_iso);
+  $("#h-last").textContent = "Última entrada: " + fmtFecha(last.fecha_iso) + (d===0?" (hoy)": d===1?" (ayer)":` (hace ${d} días)`);
+  if(d>=3) msg(nud, "Ya pasaron "+d+" días desde tu última entrada. ¿Te tomas 5 minutos hoy?", "warn");
+  else if(d>=2) msg(nud, "Buen momento para una nueva entrada.", "info");
+  else msg(nud,"");
+  if(FLASH){ msg(nud, FLASH, "info"); FLASH = null; }
+}
+
+function initScales(root){
+  $$(".scale", root).forEach(sc => {
+    const k = sc.dataset.k, r = $("input",sc), v = $(".val",sc);
+    const set = () => { scaleSet[k] = +r.value; v.textContent = r.value; v.classList.remove("unset"); };
+    r.oninput = set; r.onchange = set;
+    r.addEventListener("pointerdown", set); r.addEventListener("touchstart", set, {passive:true});
+  });
+}
+function resetEntry(){
+  scaleSet = {}; tragarse = null;
+  $$("#v-entry .scale").forEach(sc => { $("input",sc).value = 5; const v=$(".val",sc); v.textContent="sin responder"; v.classList.add("unset"); });
+  $$("#e-trag button").forEach(b=>b.classList.remove("on"));
+  $("#e-tragint").classList.add("hidden");
+  $("#e-coping").innerHTML = CFG.afrontamiento.map(([k,t]) =>
+    `<label class="chk"><input type="checkbox" value="${k}"><span>${t}</span></label>`).join("");
+  $$("#e-coping input").forEach(i => i.onchange = () => i.parentElement.classList.toggle("on", i.checked));
+  $("#e-otro").value = "";
+  recB = Recorder($("#r-bonito"), "bonito", CFG.maxSeg.bonito);
+  recD = Recorder($("#r-dificil"), "dificil", CFG.maxSeg.dificil);
+  msg($("#e-msg"),"");
+  sortedEntries().then(es => {
+    const last = es[es.length-1];
+    $("#e-since").textContent = last ? "desde tu última entrada (" + fmtFecha(last.fecha_iso) + ")" : "desde el cierre del semestre";
+  });
+}
+
+$$("#e-trag button").forEach(b => b.onclick = () => {
+  tragarse = b.dataset.v;
+  $$("#e-trag button").forEach(x=>x.classList.toggle("on", x===b));
+  $("#e-tragint").classList.toggle("hidden", tragarse!=="si");
+  if(tragarse!=="si") delete scaleSet.tragarse_intensidad;
+});
+
+$("#e-cancel").onclick = () => {
+  if((recB && (recB.hasContent()||recB.isRecording())) || (recD && (recD.hasContent()||recD.isRecording())))
+    if(!confirm("¿Salir sin guardar? Se perderá lo que grabaste.")) return;
+  show("home");
+};
+
+$("#e-save").onclick = async () => {
+  const m = $("#e-msg");
+  if(recB.isRecording() || recD.isRecording()){ msg(m,"Detén la grabación antes de guardar.","err"); return; }
+  const faltan = [];
+  ["estres","sueno","descanso","animo"].forEach(k => { if(!(k in scaleSet)) faltan.push(k); });
+  if(!tragarse) faltan.push("tragarse");
+  if(!recB.hasContent()) faltan.push("lo más bonito");
+  if(!recD.hasContent()) faltan.push("lo más difícil");
+  if(faltan.length && !confirm("Te faltan algunas respuestas ("+faltan.length+"). ¿Guardar así de todos modos?")) return;
+
+  const es = await sortedEntries();
+  const last = es[es.length-1];
+  const now = new Date();
+  const n = es.reduce((a,e)=>Math.max(a,e.n||0),0) + 1;
+  const pack = (rec, cual) => {
+    const s = rec.state;
+    if(s.modo==="audio" && s.blob){
+      return { modo:"audio", archivo:`audio/${safeCode(CODE)}_E${pad(n)}_${cual}.${extFor(s.mime)}`, mime:s.mime, duracion_s:s.dur, texto:null, _blob:s.blob };
+    }
+    if(s.modo==="texto" && s.texto.trim()) return { modo:"texto", archivo:null, mime:null, duracion_s:null, texto:s.texto.trim() };
+    return { modo:"vacio", archivo:null, mime:null, duracion_s:null, texto:null };
+  };
+  const b = pack(recB,"bonito"), d = pack(recD,"dificil");
+  const entry = {
+    id: "E" + now.getTime(),
+    n,
+    fecha_iso: localISO(now),
+    dias_desde_anterior: last ? +((now - new Date(last.fecha_iso))/86400000).toFixed(2) : null,
+    escalas: {
+      estres: scaleSet.estres ?? null, sueno: scaleSet.sueno ?? null,
+      descanso: scaleSet.descanso ?? null, animo: scaleSet.animo ?? null
+    },
+    tragarse: { respuesta: tragarse, intensidad: tragarse==="si" ? (scaleSet.tragarse_intensidad ?? null) : null },
+    afrontamiento: $$("#e-coping input:checked").map(i=>i.value),
+    afrontamiento_otro: $("#e-otro").value.trim() || null,
+    bonito: b, dificil: d,
+    enviada: false, enviada_iso: null
+  };
+  // los blobs se guardan aparte del objeto descriptivo
+  entry.audio_bonito = b._blob || null; delete b._blob;
+  entry.audio_dificil = d._blob || null; delete d._blob;
+  try{
+    await DB.put(entry);
+    if(navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(()=>{});
+    FLASH = "Entrada guardada ✓ Recuerda enviarla desde la pestaña <b>Enviar</b>.";
+    show("home");
+  }catch(err){
+    msg(m, "No se pudo guardar: " + esc(err.message || err), "err");
+  }
+};
+
+/* ---------- enviar ---------- */
+$$("#s-mode button").forEach(b => b.onclick = () => {
+  sendMode = b.dataset.v; $$("#s-mode button").forEach(x=>x.classList.toggle("on",x===b)); renderSend();
+});
+async function toSend(){ const es = await sortedEntries(); return sendMode==="all" ? es : es.filter(e=>!e.enviada); }
+async function renderSend(){
+  const es = await toSend();
+  let bytes = 0; es.forEach(e => { bytes += (e.audio_bonito?.size||0) + (e.audio_dificil?.size||0); });
+  $("#s-info").textContent = es.length
+    ? `${es.length} entrada(s) · aprox. ${(bytes/1048576).toFixed(1)} MB`
+    : (sendMode==="pend" ? "No tienes entradas nuevas por enviar." : "Aún no tienes entradas.");
+  $("#s-share").disabled = $("#s-dl").disabled = !es.length;
+  msg($("#s-msg"),"");
+}
+async function buildZip(){
+  const es = await toSend();
+  const enc = new TextEncoder(), files = [];
+  const meta = {
+    estudio: CFG.estudio, version_app: CFG.version, participante: safeCode(CODE),
+    exportado_iso: localISO(), dispositivo: navigator.userAgent, n_entradas: es.length,
+    escalas_rango: "0-10",
+    afrontamiento_catalogo: Object.fromEntries(CFG.afrontamiento),
+    entradas: es.map(e => { const c = {...e}; delete c.audio_bonito; delete c.audio_dificil; delete c.enviada; delete c.enviada_iso; return c; })
+  };
+  files.push({ name: "entradas.json", data: enc.encode(JSON.stringify(meta, null, 2)) });
+  for(const e of es){
+    if(e.audio_bonito && e.bonito.archivo) files.push({ name:e.bonito.archivo, data:new Uint8Array(await e.audio_bonito.arrayBuffer()) });
+    if(e.audio_dificil && e.dificil.archivo) files.push({ name:e.dificil.archivo, data:new Uint8Array(await e.audio_dificil.arrayBuffer()) });
+  }
+  const name = `diario_${safeCode(CODE)}_${stamp()}.zip`;
+  return { blob: makeZip(files), name, es };
+}
+async function markSent(es){
+  const now = localISO();
+  for(const e of es){ if(!e.enviada){ e.enviada = true; e.enviada_iso = now; await DB.put(e); } }
+}
+function download(blob, name){
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+}
+$("#s-share").onclick = async () => {
+  const m = $("#s-msg"); msg(m,"Preparando archivo…");
+  try{
+    const { blob, name, es } = await buildZip();
+    const file = new File([blob], name, { type:"application/zip" });
+    const text = `Diario vacacional · ${safeCode(CODE)} · ${es.length} entrada(s)`;
+    if(navigator.canShare && navigator.canShare({ files:[file] })){
+      try{
+        await navigator.share({ files:[file], title:name, text });
+        await markSent(es);
+        msg(m,"¡Enviado! ✓ Si no elegiste WhatsApp o no llegó, puedes volver a enviarlo desde “Todas”.","info");
+        renderSend();
+      }catch(err){
+        if(err && err.name==="AbortError") msg(m,"Envío cancelado. Tus entradas siguen guardadas.","warn");
+        else throw err;
+      }
+    }else{
+      download(blob, name);
+      msg(m,`Este navegador no permite compartir archivos directamente. Se descargó <b>${esc(name)}</b>: ábrelo en WhatsApp con el clip 📎 → Documento, y envíalo al 777 791 1872. Luego toca “Marcar como enviadas”.<div class="row" style="margin-top:8px"><button class="sec" id="s-mark">Marcar como enviadas</button><button class="sec" id="s-open">Abrir chat</button></div>`,"warn");
+      $("#s-mark").onclick = async () => { await markSent(es); renderSend(); msg(m,"Marcadas como enviadas ✓","info"); };
+      $("#s-open").onclick = openChat;
+    }
+  }catch(err){ msg(m,"Ocurrió un error: " + esc(err.message || err),"err"); }
+};
+$("#s-dl").onclick = async () => {
+  const m = $("#s-msg");
+  try{ const { blob, name } = await buildZip(); download(blob, name); msg(m,`Descargado: <b>${esc(name)}</b>`,"info"); }
+  catch(err){ msg(m,"Ocurrió un error: " + esc(err.message || err),"err"); }
+};
+function openChat(){
+  const t = encodeURIComponent(`Hola, soy ${safeCode(CODE)} del diario vacacional de la CABINA.`);
+  window.open(`https://wa.me/${CFG.whatsapp}?text=${t}`, "_blank");
+}
+$("#s-chat").onclick = openChat;
+
+/* ---------- historial ---------- */
+async function renderList(){
+  const es = (await sortedEntries()).reverse();
+  $("#l-code").textContent = CODE;
+  const L = $("#l-list");
+  if(!es.length){ L.innerHTML = `<p class="hint">Aún no hay entradas.</p>`; return; }
+  L.innerHTML = es.map(e => {
+    const parts = [];
+    if(e.escalas.estres!=null) parts.push("estrés " + e.escalas.estres);
+    if(e.escalas.animo!=null) parts.push("ánimo " + e.escalas.animo);
+    const med = [e.bonito.modo, e.dificil.modo].map(x => x==="audio"?"🎙":x==="texto"?"✍":"–").join(" ");
+    return `<div class="entry"><div><b>#${e.n}</b> ${fmtFecha(e.fecha_iso)}<br><small>${parts.join(" · ")} ${med}</small></div>
+      <div class="row"><span class="pill ${e.enviada?"sent":"new"}">${e.enviada?"enviada":"sin enviar"}</span>
+      <button class="danger" data-del="${e.id}" style="padding:6px 10px">✕</button></div></div>`;
+  }).join("");
+  $$("[data-del]", L).forEach(b => b.onclick = async () => {
+    if(!confirm("¿Borrar esta entrada de tu teléfono? No se puede deshacer.")) return;
+    await DB.del(b.dataset.del); renderList();
+  });
+}
+$("#l-chcode").onclick = async () => {
+  const c = prompt("Nuevo código de participante:", CODE);
+  if(c && safeCode(c) !== "SINCODIGO"){ CODE = safeCode(c); await DB.set("code", CODE); renderList(); }
+};
+
+/* ---------- recordatorios .ics ---------- */
+$("#h-ics").onclick = () => {
+  const { cadaDias, veces, hora } = CFG.recordatorios;
+  const d = new Date(); const [hh,mm] = hora.split(":").map(Number);
+  d.setDate(d.getDate()+1); d.setHours(hh,mm,0,0);
+  const f = x => x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate())+"T"+pad(x.getHours())+pad(x.getMinutes())+"00";
+  const e = new Date(d.getTime()+10*60000);
+  const url = location.href.split("#")[0];
+  const ics = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//CINCCo-UAEM//Diario CABINA//ES","BEGIN:VEVENT",
+    "UID:diario-cabina-"+Date.now()+"@cincco","DTSTAMP:"+f(new Date()),
+    "DTSTART:"+f(d),"DTEND:"+f(e),
+    `RRULE:FREQ=DAILY;INTERVAL=${cadaDias};COUNT=${veces}`,
+    "SUMMARY:Diario vacacional CABINA (5 min)",
+    "DESCRIPTION:Lo más bonito\\, lo más difícil y cómo lo afrontaste. "+url,
+    "BEGIN:VALARM","TRIGGER:PT0M","ACTION:DISPLAY","DESCRIPTION:Diario vacacional CABINA","END:VALARM",
+    "END:VEVENT","END:VCALENDAR"].join("\r\n");
+  download(new Blob([ics],{type:"text/calendar"}), "recordatorios_diario_cabina.ics");
+};
+
+/* ---------- arranque ---------- */
+$$("#nav button").forEach(b => b.onclick = () => {
+  const cur = $$("section").find(s=>!s.classList.contains("hidden"))?.id;
+  if(cur==="v-entry" && b.dataset.v!=="entry" &&
+     ((recB && (recB.hasContent()||recB.isRecording())) || (recD && (recD.hasContent()||recD.isRecording()))) &&
+     !confirm("¿Salir sin guardar la entrada?")) return;
+  show(b.dataset.v);
+});
+$("#h-new").onclick = () => show("entry");
+$("#c-go").onclick = async () => {
+  const m = $("#c-msg");
+  if(!$("#c-ok").checked){ msg(m,"Necesitas aceptar para continuar.","err"); return; }
+  const c = safeCode($("#c-code").value);
+  if(c==="SINCODIGO"){ msg(m,"Escribe tu código de participante.","err"); return; }
+  CODE = c; await DB.set("code", CODE); await DB.set("consent_iso", localISO()); show("home");
+};
+initScales(document);
+(async () => {
+  if(!window.isSecureContext) {
+    document.querySelector("main").insertAdjacentHTML("afterbegin",
+      `<div class="status warn"><b>Abriste el diario como archivo.</b> Así no se puede grabar ni enviar. Cierra esta ventana y abre el <b>enlace</b> del diario en Safari (iPhone) o Chrome (Android).</div>`);
+  }
+  try{ CODE = await DB.get("code"); }catch(e){ CODE = null; }
+  show(CODE ? "home" : "setup");
+})();
+</script>
+</body>
+</html>
