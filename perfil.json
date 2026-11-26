@@ -1,0 +1,188 @@
+{
+  "title": {
+    "es": "Perfil académico",
+    "en": "Academic profile"
+  },
+  "intro": {
+    "es": "Doctora en Ingeniería y Ciencias Aplicadas. Profesora investigadora de tiempo completo del CINCCO-UAEM. Su trabajo integra tecnologías cognitivas, inteligencia artificial y bienestar humano.",
+    "en": "PhD in Engineering and Applied Sciences. Full-time research professor at CINCCO-UAEM. Her work integrates cognitive technologies, artificial intelligence and human well-being."
+  },
+  "sections": [
+    {
+      "title": {
+        "es": "Gestión académica",
+        "en": "Academic leadership"
+      },
+      "items": [
+        {
+          "id": "dcc",
+          "title": {
+            "es": "Coordinadora del Doctorado en Ciencias Cognitivas",
+            "en": "Coordinator, PhD Program in Cognitive Sciences"
+          },
+          "description": {
+            "es": "CINCCO-UAEM · Desde el 11 de noviembre de 2026",
+            "en": "CINCCO-UAEM · Since November 11, 2026"
+          },
+          "links": []
+        },
+        {
+          "id": "mcc",
+          "title": {
+            "es": "Coordinadora de la Maestría en Ciencias Cognitivas",
+            "en": "Coordinator, Master’s Program in Cognitive Sciences"
+          },
+          "description": {
+            "es": "CINCCO-UAEM · Junio 2025 – noviembre 2026",
+            "en": "CINCCO-UAEM · June 2025 – November 2026"
+          },
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": {
+        "es": "Formación académica",
+        "en": "Education"
+      },
+      "items": [
+        {
+          "id": "phd",
+          "title": {
+            "es": "Doctorado en Ingeniería y Ciencias Aplicadas",
+            "en": "PhD in Engineering and Applied Sciences"
+          },
+          "description": {
+            "es": "UAEM",
+            "en": "UAEM"
+          },
+          "links": []
+        },
+        {
+          "id": "msc1",
+          "title": {
+            "es": "Maestría en Ciencias Cognitivas",
+            "en": "Master’s in Cognitive Sciences"
+          },
+          "description": {
+            "es": "UAEM",
+            "en": "UAEM"
+          },
+          "links": []
+        },
+        {
+          "id": "msc2",
+          "title": {
+            "es": "Maestría en Ingeniería Industrial",
+            "en": "Master’s in Industrial Engineering"
+          },
+          "description": {
+            "es": "ITESM, Campus CDMX",
+            "en": "ITESM, Mexico City campus"
+          },
+          "links": []
+        },
+        {
+          "id": "bs",
+          "title": {
+            "es": "Licenciatura en Matemáticas Aplicadas a la Computación",
+            "en": "Bachelor’s in Applied Mathematics and Computing"
+          },
+          "description": {
+            "es": "UAM-I",
+            "en": "UAM-I"
+          },
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": {
+        "es": "Distinciones y liderazgo científico",
+        "en": "Recognition and scientific leadership"
+      },
+      "items": [
+        {
+          "id": "snii",
+          "title": {
+            "es": "SNII Nivel I",
+            "en": "SNII Level I"
+          },
+          "description": {
+            "es": "Sistema Nacional de Investigadoras e Investigadores; Perfil PRODEP.",
+            "en": "National System of Researchers; PRODEP profile."
+          },
+          "links": []
+        },
+        {
+          "id": "ieee",
+          "title": {
+            "es": "IEEE Senior Member",
+            "en": "IEEE Senior Member"
+          },
+          "description": {
+            "es": "Desde 2022. Vicepresidenta de IEEE Sección Morelos (2025–2026). Participación en Computer Society y Women in Engineering.",
+            "en": "Since 2022. Vice Chair, IEEE Morelos Section (2025–2026). Participation in Computer Society and Women in Engineering."
+          },
+          "links": []
+        },
+        {
+          "id": "glasgow",
+          "title": {
+            "es": "IEEE Sections Congress 2026",
+            "en": "IEEE Sections Congress 2026"
+          },
+          "description": {
+            "es": "Delegada de la Sección Morelos, Glasgow, Escocia.",
+            "en": "Morelos Section delegate, Glasgow, Scotland."
+          },
+          "links": []
+        },
+        {
+          "id": "sei",
+          "title": {
+            "es": "Sistema Estatal de Investigadores",
+            "en": "State System of Researchers"
+          },
+          "description": {
+            "es": "Morelos, Área 1: Físico-Matemáticas y Ciencias de la Tierra.",
+            "en": "Morelos, Area 1: Physics, Mathematics and Earth Sciences."
+          },
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": {
+        "es": "Investigación y trayectoria profesional",
+        "en": "Research and professional experience"
+      },
+      "items": [
+        {
+          "id": "research",
+          "title": {
+            "es": "Tecnologías cognitivas para el bienestar",
+            "en": "Cognitive technologies for well-being"
+          },
+          "description": {
+            "es": "Industria 4.0 y 5.0, sistemas híbridos humano-tecnología, análisis computacional de narrativas y optimización metaheurística.",
+            "en": "Industry 4.0 and 5.0, hybrid human-technology systems, computational narrative analysis and metaheuristic optimization."
+          },
+          "links": []
+        },
+        {
+          "id": "company",
+          "title": {
+            "es": "Eraña Consultores",
+            "en": "Eraña Consultores"
+          },
+          "description": {
+            "es": "Fundadora de empresa de TI verificada bajo MoProSoft nivel 3; más de 20 años de experiencia en desarrollo e implantación de sistemas.",
+            "en": "Founder of an IT company verified under MoProSoft level 3; over 20 years of experience developing and implementing information systems."
+          },
+          "links": []
+        }
+      ]
+    }
+  ]
+}

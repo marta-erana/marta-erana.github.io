@@ -1,0 +1,109 @@
+{
+  "title": {
+    "es": "Software científico",
+    "en": "Scientific software"
+  },
+  "intro": {
+    "es": "Herramientas para la investigación, la innovación y el bienestar.",
+    "en": "Tools for research, innovation and well-being."
+  },
+  "sections": [
+    {
+      "title": {
+        "es": "Desarrollos recientes",
+        "en": "Recent developments"
+      },
+      "items": [
+        {
+          "id": "etno",
+          "title": {
+            "es": "EtnoPLeNa v3",
+            "en": "EtnoPLeNa v3"
+          },
+          "description": {
+            "es": "Análisis asistido de entrevistas y narrativas etnográficas mediante PLN.",
+            "en": "NLP-assisted analysis of interviews and ethnographic narratives."
+          },
+          "year": 2026,
+          "registration": "03-2026-102910440500-01",
+          "links": []
+        },
+        {
+          "id": "audio",
+          "title": {
+            "es": "AudioSUS",
+            "en": "AudioSUS"
+          },
+          "description": {
+            "es": "Análisis de la escala SUS aplicada con grabación de voz.",
+            "en": "Analysis of the System Usability Scale with voice recording."
+          },
+          "year": 2026,
+          "registration": "03-2026-102910395500-01",
+          "links": []
+        },
+        {
+          "id": "rag",
+          "title": {
+            "es": "RAG-CognIA y Hf_deployer",
+            "en": "RAG-CognIA and Hf_deployer"
+          },
+          "description": {
+            "es": "Publicación de asistentes conversacionales en Hugging Face Spaces con tres estilos seleccionables, Groq y RAG.",
+            "en": "Deployment of conversational assistants on Hugging Face Spaces with three selectable styles, Groq and RAG."
+          },
+          "year": 2026,
+          "registration": "03-2026-072709561300-01 / 03-2026-091810071800-01",
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": {
+        "es": "Trayectoria tecnológica",
+        "en": "Technology development history"
+      },
+      "items": [
+        {
+          "id": "cali",
+          "title": {
+            "es": "CALISOFT",
+            "en": "CALISOFT"
+          },
+          "description": {
+            "es": "Gestión de proyectos y objetivos estratégicos bajo normas de calidad.",
+            "en": "Project management and strategic objectives under quality standards."
+          },
+          "year": 2018,
+          "links": []
+        },
+        {
+          "id": "sig",
+          "title": {
+            "es": "IMPLEMENTASIG",
+            "en": "IMPLEMENTASIG"
+          },
+          "description": {
+            "es": "Tablero de control con semaforización inteligente de indicadores gerenciales.",
+            "en": "Dashboard with intelligent traffic-light indicators for management."
+          },
+          "year": 2016,
+          "links": []
+        },
+        {
+          "id": "se",
+          "title": {
+            "es": "SE-BIENESTAR",
+            "en": "SE-BIENESTAR"
+          },
+          "description": {
+            "es": "Identificación y gestión de factores de riesgo psicosocial laboral.",
+            "en": "Identification and management of workplace psychosocial risk factors."
+          },
+          "year": 2015,
+          "links": []
+        }
+      ]
+    }
+  ]
+}

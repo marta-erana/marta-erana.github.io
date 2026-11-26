@@ -1,0 +1,306 @@
+{
+  "publicaciones": [
+    {
+      "id": "pub-01",
+      "year": 2026,
+      "group": "principal",
+      "citation": "Eraña-Díaz, M. L., Enríquez-Urbano, J., Martínez-Bahena, B., Juárez-Chávez, J. Y., D’Granda-Trejo, A., & De-la-Rosa-Mondragon, J. (2026). Artificial Neural Network-Based Classification of Industrial Sustainability Profiles for Differentiated Fiscal Policy Design in Remanufacturing Processes. Processes, 14(9), 1501",
+      "links": [
+        "https://doi.org/10.3390/pr14091501"
+      ]
+    },
+    {
+      "id": "pub-02",
+      "year": 2026,
+      "group": "principal",
+      "citation": "Eraña-Díaz, M. L. (2026). Introduccíon a la Cognición Artificial: Mente, Cuerpo y Tecnologia. Editorial Académica Española. ISBN: 978-620-9-94025-5",
+      "links": [
+        "https://www.morebooks.shop/shop-ui/shop/product/9786209940255"
+      ]
+    },
+    {
+      "id": "pub-03",
+      "year": 2026,
+      "group": "principal",
+      "citation": "Eraña-Díaz, M. L., Oseguera Gamba, J. P., & Lara Ruiz, N. (2026). Desinformacion y Alfabetización Mediática: Clasificación de Patrones de Confianza en Noticias entre Adolescentes mediante Machine Learning. Programación matemática Y Software, 18(1), 11–30",
+      "links": [
+        "https://doi.org/10.30973/progmat/2026.18.1/2"
+      ]
+    },
+    {
+      "id": "pub-04",
+      "year": 2026,
+      "group": "principal",
+      "citation": "Eraña-Díaz, M. L. (2026). PREDICT PSYCHOSOCIAL RISK IN THE WORKPLACE THROUGH A BRIEF SURVEY APPLYING DATA ENGINEERING AND ARTIFICIAL NEURAL NETWORKS. Veredas Do Direito, 23(7), e236097",
+      "links": [
+        "https://doi.org/10.18623/rvd.v23.6097"
+      ]
+    },
+    {
+      "id": "pub-05",
+      "year": 2026,
+      "group": "principal",
+      "citation": "Eraña-Díaz, M. L. (2026). Semaforización inteligente: Un enfoque personalizado para la NOM-035 con técnicas de machine learning. Revista Electrónica de Psicología de la, 14",
+      "links": [
+        "https://www.zaragoza.unam.mx/wp-content/2022/Publicaciones/revistas/Rev_Elec_Psico/Vol_16/REP16_2026_ESP-abr08.pdf"
+      ]
+    },
+    {
+      "id": "pub-06",
+      "year": 2026,
+      "group": "principal",
+      "citation": "Eraña-Díaz, M. L., Rosales-Lagarde, A., Arango-de-Montis, I., & Velázquez-Monzón, J. A. (2026). Generative AI-Assisted Automation of Clinical Data Processing: A Methodological Framework for Streamlining Behavioral Research Workflows. Informatics, 13(4), 48",
+      "links": [
+        "https://doi.org/10.3390/informatics13040048"
+      ]
+    },
+    {
+      "id": "pub-07",
+      "year": 2025,
+      "group": "principal",
+      "citation": "Eraña-Díaz, M. L., Cruz-Chávez, M. A., Acosta-Flores, M., Enriquez-Urbano, J., Lara-Ruiz, N., & Oseguera-Gamba, J. P. (2025). Interdisciplinary Methodology for Resource Allocation Problems using Artificial Neural Networks and Software Robots. IEEE Access, Vol 13, pp. 131141-131158",
+      "links": [
+        "https://ieeexplore.ieee.org/abstract/document/11091300"
+      ]
+    },
+    {
+      "id": "pub-08",
+      "year": 2024,
+      "group": "principal",
+      "citation": "Eraña-Diaz, ML., Rosales-Lagarde, A., Reyes-Soto, A., Arango-de-Montis, I., Rodríguez-Delgado, A., Muñoz-Delgado, J. (2024). Data Engineering for Nonverbal Expression Analysis - Case Studies of Borderline Personality Disorder. In: Singh, M., et al. Advances in Computing and Data Sciences. ICACDS 2024. Communications in Computer and Information Science, vol 2194. Springer, Cham",
+      "links": [
+        "https://doi.org/10.1007/978-3-031-70906-7_14"
+      ]
+    },
+    {
+      "id": "pub-09",
+      "year": 2024,
+      "group": "principal",
+      "citation": "Eraña-Díaz , M.-L., & Rosales-Lagarde , A. . (2024). Algoritmos inteligentes aplicados al análisis del perfil de estrés con perspectiva de género. Journal of Behavior, Health & Social Issues , 16 (1)",
+      "links": [
+        "https://doi.org/10.22201/fesi.20070780e.2024.16.1.86710",
+        "https://revistas.unam.mx/index.php/jbhsi/article/view/86710"
+      ]
+    },
+    {
+      "id": "pub-10",
+      "year": 2022,
+      "group": "principal",
+      "citation": "Eraña-Díaz, M., & Acosta-Flores, M. (2022). Determination of the Elastic Constants of a Metal-Laminated Composite Material using Artificial Neural Networks. In (Ed.), Artificial Neural Networks - Recent Advances, New Perspectives and Applications [Working Title]. IntechOpen",
+      "links": [
+        "https://doi.org/10.5772/intechopen.108601"
+      ]
+    },
+    {
+      "id": "pub-11",
+      "year": 2021,
+      "group": "principal",
+      "citation": "Eraña-Díaz, M.L.; Cruz-Chávez, M.A.; Juárez-Pérez, F.; Enriquez-Urbano, J.; Rivera-López, R.; Acosta-Flores, M. (2021). Optimization Method to Address Psychosocial Risks through Adaptation of the Multidimensional Knapsack Problem. Mathematics 2021, 9, 1126",
+      "links": [
+        "https://doi.org/10.3390/math9101126"
+      ]
+    },
+    {
+      "id": "pub-12",
+      "year": 2020,
+      "group": "principal",
+      "citation": "Eraña-Díaz, M. L., Cruz-Chávez, M. A., Rivera-López, R., Martínez-Bahena, B., & Cruz-Rosales, M. H. (2020). Optimization for Risk Decision-Making Through Simulated Annealing. IEEE Access, 8, 117063-117079",
+      "links": [
+        "https://ieeexplore.ieee.org/document/9125878"
+      ]
+    },
+    {
+      "id": "pub-13",
+      "year": 2020,
+      "group": "principal",
+      "citation": "Eraña Díaz, M. L. (2020). Recocido Simulado y Aprendizaje Automático Aplicado a la Optimización de Factores de Riesgo Empresarial [Tesis de doctorado]. Universidad Autónoma del Estado de Morelos",
+      "links": [
+        "http://riaa.uaem.mx/handle/20.500.12055/1243"
+      ]
+    },
+    {
+      "id": "pub-14",
+      "year": 2020,
+      "group": "principal",
+      "citation": "Eraña Díaz , M. L., Rosales Lagarde, A. (2020). Técnicas de Machine Learning aplicadas a la expresión facial de pacientes con Trastorno Límite de la Personalidad en una tarea de exclusión social. Revista Bio Ciencias 7: (Suppl) Memorias de Congreso. LXIII Congreso Nacional de la Sociedad Mexicana de Ciencias Fisiologicas, A. C. e1097",
+      "links": [
+        "http://doi.org/10.15741/revbio.07Suppl.e1097"
+      ]
+    },
+    {
+      "id": "pub-15",
+      "year": 2024,
+      "group": "colaboracion",
+      "citation": "Acosta-Flores, M., Contreras-Valenzuela, M. R., Velásquez-Aguilar, J. G., Cuenca-Jiménez, F., & Eraña-Díaz, M. L. (2024). Triaxial Load Cell for Ergonomic Risk Assessment: A Study Case of Applied Force of Thumb. Applied Sciences, 14(10), 3981",
+      "links": [
+        "https://doi.org/10.3390/app14103981"
+      ]
+    },
+    {
+      "id": "pub-16",
+      "year": 2024,
+      "group": "colaboracion",
+      "citation": "Arango-de-Montis I, Reyes-Soto A, Rosales-Lagarde A, Eraña-Díaz ML, Vázquez-Mendoza E, Rodríguez-Delgado A, Muñoz-Delgado J, Vázquez-Mendoza I, Rodriguez-Torres EE. Automatic detection of facial expressions during the Cyberball paradigm in Borderline Personality Disorder: a pilot study. Front Psychiatry. 2024 May 28;15:1354762. doi: 10.3389/fpsyt.2024.1354762. PMID: 38895036; PMCID: PMC11184241. DOI: 10.3389/fpsyt.2024.1354762",
+      "links": [
+        "https://doi.org/10.3389/fpsyt.2024.1354762"
+      ]
+    },
+    {
+      "id": "pub-17",
+      "year": 2024,
+      "group": "colaboracion",
+      "citation": "Acosta-Flores, M., Eraña-Díaz, M. L. (2024). Experimental determination of elastic properties in laminate composite material orthotropic plies. Journal of Mechanical Science and Technology 38 (3) (2024) 1317~1328",
+      "links": [
+        "http://doi.org/10.1007/s12206-024-0226-6"
+      ]
+    },
+    {
+      "id": "pub-18",
+      "year": 2023,
+      "group": "colaboracion",
+      "citation": "Rosales-Lagarde, A., Cubero-Rego, L., Menéndez-Conde, F., Rodríguez-Torres, E. E., Itzá-Ortiz, B., Martínez-Alcalá, C., ... & Eraña Díaz, M. L. (2023). Dissociation of Arousal Index Between REM and NREM Sleep in Elderly Adults with Cognitive Impairment, No Dementia: A Pilot Study. Journal of Alzheimer's Disease, (Preprint), 1-15. DOI: 10.3233/JAD-230101",
+      "links": [
+        "https://doi.org/10.3233/JAD-230101"
+      ]
+    },
+    {
+      "id": "pub-19",
+      "year": 2023,
+      "group": "colaboracion",
+      "citation": "Avila-Melgar, E. Y., Cruz-Chávez, M. A., Martínez-Bahena, B., Eraña-Díaz, M. L., & Cruz-Rosales, M. H. (2023). Parallel evolutionary algorithm for Water Distribution Network Design, using the Masters-Students model in distributed environment. Applied Soft Computing, 109986",
+      "links": []
+    },
+    {
+      "id": "pub-20",
+      "year": 2022,
+      "group": "colaboracion",
+      "citation": "Flores, M. A., López, E. J., & Erana-Díaz, M. L. (2022). Obtaining of a Constitutive Models of Laminate Composite Materials. DOI: 10.5772/intechopen.100607",
+      "links": [
+        "https://doi.org/10.5772/intechopen.100607"
+      ]
+    },
+    {
+      "id": "pub-21",
+      "year": 2022,
+      "group": "colaboracion",
+      "citation": "Juárez-Pérez, F.; Cruz-Chávez, M.A.; Rivera-López, R.; Ávila-Melgar, E.Y.; Eraña-Díaz, M.L.; Cruz-Rosales, M.H. Grid-Based Hybrid Genetic Approach to Relaxed Flexible Flow Shop with Sequence-Dependent Setup Times. Appl. Sci. 2022, 12, 607",
+      "links": [
+        "https://doi.org/10.3390/app12020607"
+      ]
+    },
+    {
+      "id": "pub-22",
+      "year": 2021,
+      "group": "colaboracion",
+      "citation": "Enríquez-Urbano, J.; Cruz-Chávez, M.A.; Rivera-López, R.; Cruz-Rosales, M.H.; Labrada-Nueva, Y.; Eraña-Díaz, M.L. Metaheuristic to Optimize Computational Convergence in Convection-Diffusion and Driven-Cavity Problems. Mathematics 2021, 9, 748",
+      "links": [
+        "https://doi.org/10.3390/math9070748"
+      ]
+    },
+    {
+      "id": "pub-23",
+      "year": 2021,
+      "group": "colaboracion",
+      "citation": "Acosta-Flores, M., Eraña-Díaz, M. L., Jiménez-López, E., García, J. C., Delfín-Vázquez, J. J., Lucero-Velázquez, B. (2021). Analytical method for determining maximum shear stresses in laminated composite metal bars subjected to torsion. Journal of Mechanical Science and Technology 35 (7) (2021)",
+      "links": [
+        "https://doi.org/10.1007/s12206-021-0625-x"
+      ]
+    },
+    {
+      "id": "pub-24",
+      "year": 2021,
+      "group": "colaboracion",
+      "citation": "Labrada-Nueva, Y.; Cruz-Rosales, M.H.; Rendón-Mancha, J.M.; Rivera-López, R.; Eraña-Díaz, M.L.; Cruz-Chávez, M.A. Overlap Detection in 2D Amorphous Shapes for Paper Optimization in Digital Printing Presses. Mathematics 2021, 9, 1033",
+      "links": [
+        "https://doi.org/10.3390/math9091033"
+      ]
+    },
+    {
+      "id": "pub-25",
+      "year": 2020,
+      "group": "colaboracion",
+      "citation": "Rosales Lagarde, A., Rodríguez Torres, E. E., Vázquez Mendoza, E., Eraña Díaz, M. L., Rodríguez Delgado, A., Reyes Soto, A., Arango de Montis, I. (2020). Diferencias entre las emociones medidas por el FaceReader durante el Cyberball de acuerdo al nivel de desconfianza social en pacientes con Trastorno Límite de la Personalidad. Bio Ciencias 7: (Suppl) Memorias de Congreso. LXIII Congreso Nacional de la Sociedad Mexicana de Ciencias Fisiologicas, A. C. e1097",
+      "links": [
+        "http://doi.org/10.15741/revbio.07Suppl.e1097"
+      ]
+    },
+    {
+      "id": "pub-26",
+      "year": 2020,
+      "group": "colaboracion",
+      "citation": "R eyes Soto, A., Rosales Lagarde, A., Eraña Diaz, M. L., Vazquez Mendoza, E., Rodriguez Torres, E., Arango De Montis, I. (2020). Expresiones faciales de emociones en pacientes con Trastorno Límite de Personalidad durante una experiencia de exclusión social. Bio Ciencias 7: (Suppl) Memorias de Congreso. LXIII Congreso Nacional de la Sociedad Mexicana de Ciencias Fisiologicas, A. C. e1097",
+      "links": [
+        "http://doi.org/10.15741/revbio.07Suppl.e1097"
+      ]
+    }
+  ],
+  "desarrollos": [
+    {
+      "title": {
+        "es": "Ficha pública 210140",
+        "en": "Public record 210140"
+      },
+      "links": [
+        "https://drive.google.com/file/d/13r2D3yQqeM85bx-hlUsp02y-sNenq8-6/view"
+      ]
+    },
+    {
+      "title": {
+        "es": "Registro de producto comercial",
+        "en": "Commercial product registration"
+      },
+      "links": [
+        "https://drive.google.com/file/d/1UNcdNaqi0GObIuOT-tYdEO5FS1Gq98U7/view"
+      ]
+    },
+    {
+      "title": {
+        "es": "EtnoPLeNa",
+        "en": "EtnoPLeNa"
+      },
+      "links": []
+    },
+    {
+      "title": {
+        "es": "RAG-CognIA",
+        "en": "RAG-CognIA"
+      },
+      "links": []
+    }
+  ],
+  "vinculacion": [
+    {
+      "title": {
+        "es": "IPLADE",
+        "en": "IPLADE"
+      },
+      "description": {
+        "es": "Análisis de la aplicación de la NOM-035 mediante algoritmos de optimización y aprendizaje automático para favorecer el cumplimiento normativo y mejorar el entorno organizacional.",
+        "en": "Analysis of NOM-035 implementation using optimization and machine learning algorithms to support regulatory compliance and improve the organizational environment."
+      },
+      "links": [
+        "http://www.iplade.com/",
+        "https://www.facebook.com/Iplade-100887042456373",
+        "https://www.youtube.com/watch?v=YjNB_UczLP4"
+      ]
+    },
+    {
+      "title": {
+        "es": "Instituto Nacional de Psiquiatría Ramón de la Fuente Muñiz (INPRFM)",
+        "en": "National Institute of Psychiatry Ramón de la Fuente Muñiz (INPRFM)"
+      },
+      "description": {
+        "es": "Análisis de expresiones faciales y ostracismo con FaceReader y Cyberball; rediseño de tareas FEEL, Stroop y Sternberg y escalas IDARE y BECK en E-Prime; estudio de sincronía no verbal con MEA. Colaboración interdisciplinaria en investigación, capacitación y prevención.",
+        "en": "Analysis of facial expressions and ostracism using FaceReader and Cyberball; redesign of FEEL, Stroop and Sternberg tasks and IDARE and BECK scales in E-Prime; nonverbal synchrony research using MEA. Interdisciplinary collaboration in research, training and prevention."
+      },
+      "links": [
+        "https://www.noldus.com/facereader",
+        "https://www.millisecond.com/download/library/cyberball/",
+        "https://psycnet.apa.org/record/2013-08049-005002",
+        "https://psync.ch/",
+        "https://www.youtube.com/watch?v=xh7975IDcS0"
+      ]
+    }
+  ],
+  "orcid": "https://orcid.org/0000-0001-8450-8247"
+}

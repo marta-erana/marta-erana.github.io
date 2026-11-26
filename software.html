@@ -1,0 +1,110 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Software científico | Marta Eraña-Díaz</title><style>
+:root{color-scheme:light;--bg:#f4f6f9;--fg:#1c2b3d;--card:#fff;--line:#d8e0e8;--accent:#286c82} :root.dark{color-scheme:dark;--bg:#101923;--fg:#e8edf4;--card:#1c2b3d;--line:#42536a;--accent:#91d5e7}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui}header{background:#1c2b3d;color:white;padding:18px 5%;display:flex;align-items:center;gap:12px;flex-wrap:wrap}header a{color:white;margin-right:auto}main{max-width:1000px;margin:auto;padding:36px 22px}h1,h2,h3{font-family:Georgia,serif;line-height:1.2}h1{font-size:clamp(30px,5vw,48px)}a{color:var(--accent)}button,input,select{font:inherit;padding:9px 13px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}button{cursor:pointer}button.active{background:var(--fg);color:var(--bg)}nav,.filters{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}article{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:20px;margin:12px 0}article h3{margin-top:0}.links{display:flex;flex-wrap:wrap;gap:12px}.meta{font-size:13px;color:var(--accent)}footer{border-top:1px solid var(--line);padding:20px 0;margin-top:40px}input{flex:1;min-width:180px}</style><header><a href="index.html">Marta Eraña-Díaz · CINCCO / UAEM</a><button id="lang">EN</button><button id="theme" aria-label="Cambiar tema / Change theme">◐</button></header><main><div class="meta" id="tag"></div><h1 id="heading"></h1><p id="intro"></p><nav><a href="perfil.html" id="p"></a><a href="software.html" id="s"></a><a href="produccion.html" id="pr"></a></nav><div id="content"></div><footer>CINCCO · UAEM · <a href="mailto:merana@uaem.mx">merana@uaem.mx</a></footer></main><script>let data={
+  "title": {
+    "es": "Software científico",
+    "en": "Scientific software"
+  },
+  "intro": {
+    "es": "Herramientas para la investigación, la innovación y el bienestar.",
+    "en": "Tools for research, innovation and well-being."
+  },
+  "sections": [
+    {
+      "title": {
+        "es": "Desarrollos recientes",
+        "en": "Recent developments"
+      },
+      "items": [
+        {
+          "id": "etno",
+          "title": {
+            "es": "EtnoPLeNa v3",
+            "en": "EtnoPLeNa v3"
+          },
+          "description": {
+            "es": "Análisis asistido de entrevistas y narrativas etnográficas mediante PLN.",
+            "en": "NLP-assisted analysis of interviews and ethnographic narratives."
+          },
+          "year": 2026,
+          "registration": "03-2026-102910440500-01",
+          "links": []
+        },
+        {
+          "id": "audio",
+          "title": {
+            "es": "AudioSUS",
+            "en": "AudioSUS"
+          },
+          "description": {
+            "es": "Análisis de la escala SUS aplicada con grabación de voz.",
+            "en": "Analysis of the System Usability Scale with voice recording."
+          },
+          "year": 2026,
+          "registration": "03-2026-102910395500-01",
+          "links": []
+        },
+        {
+          "id": "rag",
+          "title": {
+            "es": "RAG-CognIA y Hf_deployer",
+            "en": "RAG-CognIA and Hf_deployer"
+          },
+          "description": {
+            "es": "Publicación de asistentes conversacionales en Hugging Face Spaces con tres estilos seleccionables, Groq y RAG.",
+            "en": "Deployment of conversational assistants on Hugging Face Spaces with three selectable styles, Groq and RAG."
+          },
+          "year": 2026,
+          "registration": "03-2026-072709561300-01 / 03-2026-091810071800-01",
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": {
+        "es": "Trayectoria tecnológica",
+        "en": "Technology development history"
+      },
+      "items": [
+        {
+          "id": "cali",
+          "title": {
+            "es": "CALISOFT",
+            "en": "CALISOFT"
+          },
+          "description": {
+            "es": "Gestión de proyectos y objetivos estratégicos bajo normas de calidad.",
+            "en": "Project management and strategic objectives under quality standards."
+          },
+          "year": 2018,
+          "links": []
+        },
+        {
+          "id": "sig",
+          "title": {
+            "es": "IMPLEMENTASIG",
+            "en": "IMPLEMENTASIG"
+          },
+          "description": {
+            "es": "Tablero de control con semaforización inteligente de indicadores gerenciales.",
+            "en": "Dashboard with intelligent traffic-light indicators for management."
+          },
+          "year": 2016,
+          "links": []
+        },
+        {
+          "id": "se",
+          "title": {
+            "es": "SE-BIENESTAR",
+            "en": "SE-BIENESTAR"
+          },
+          "description": {
+            "es": "Identificación y gestión de factores de riesgo psicosocial laboral.",
+            "en": "Identification and management of workplace psychosocial risk factors."
+          },
+          "year": 2015,
+          "links": []
+        }
+      ]
+    }
+  ]
+};let lang=localStorage.getItem('academic-lang')==='en'?'en':'es';const $=id=>document.getElementById(id),tr=(es,en)=>lang==='es'?es:en;function el(tag,t,p){let n=document.createElement(tag);n.textContent=t;p.append(n);return n}function render(){document.documentElement.lang=lang;$('lang').textContent=tr('EN','ES');$('tag').textContent=tr('COGNICIÓN · TECNOLOGÍA · BIENESTAR','COGNITION · TECHNOLOGY · WELL-BEING');$('heading').textContent=data.title[lang];$('intro').textContent=data.intro[lang];$('p').textContent=tr('Perfil','Profile');$('s').textContent=tr('Software científico','Scientific software');$('pr').textContent=tr('Producción','Publications and output');let c=$('content');c.replaceChildren();for(let sec of data.sections){el('h2',sec.title[lang],c);for(let x of sec.items){let a=el('article','',c);if(x.year)el('div',x.year,a).className='meta';el('h3',x.title[lang],a);el('p',x.description[lang],a);if(x.registration)el('small',tr('Registro: ','Registration: ')+x.registration,a);for(let u of x.links||[]){if(!/^https?:\/\//i.test(u))continue;let l=el('a',tr('Consultar recurso ↗','View resource ↗'),a);l.href=u;l.target='_blank';l.rel='noopener noreferrer'}}}}$('lang').onclick=()=>{lang=tr('en','es');localStorage.setItem('academic-lang',lang);render()};document.documentElement.classList.toggle('dark',localStorage.getItem('academic-theme')==='dark');$('theme').onclick=()=>{document.documentElement.classList.toggle('dark');localStorage.setItem('academic-theme',document.documentElement.classList.contains('dark')?'dark':'light')};render();if(location.protocol!=='file:')fetch("software.json").then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{data=d;render()}).catch(()=>{});</script></html>
