@@ -257,7 +257,7 @@
 "use strict";
 /* ================= CONFIGURACIÓN ================= */
 const CFG = {
-  version: "1.0",
+  version: "1.0.1",
   estudio: "CABINA-  ECOLÓGICA · Diario vacacional (EEG + HRV pre/post)",
   whatsapp: "527777911872",          // +52 777 791 1872
   maxSeg: { bonito: 120, dificil: 180 },
@@ -291,7 +291,8 @@ const DB = (() => {
         db.createObjectStore("config");
       };
       r.onsuccess = () => res(r.result);
-      r.onerror = () => rej(r.error);
+      r.onerror = () => { dbp = null; rej(r.error); };
+      r.onblocked = () => { dbp = null; rej(new Error("Base de datos bloqueada. Cierra otras pestañas del diario.")); };
     });
     return dbp;
   }
@@ -436,7 +437,7 @@ function Recorder(host, key, maxSeg){
   bStop.onclick = () => { if(mr && mr.state==="recording") mr.stop(); };
   return {
     state: st,
-    isRecording: () => !!(mr && mr.state==="recording"),
+    isRecording: () => !!(mr && (mr.state==="recording" || (stream && stream.getTracks().some(t=>t.readyState==="live")))),
     hasContent: () => (st.modo==="audio" && st.blob) || (st.modo==="texto" && st.texto.trim().length>0)
   };
 }
@@ -516,13 +517,18 @@ $("#e-cancel").onclick = () => {
 
 $("#e-save").onclick = async () => {
   const m = $("#e-msg");
+  const btn = $("#e-save");
+  btn.disabled = true;
+  try {
+  msg(m,"Comprobando respuestas…");
   if(recB.isRecording() || recD.isRecording()){ msg(m,"Detén la grabación antes de guardar.","err"); return; }
   const faltan = [];
   ["estres","sueno","descanso","animo"].forEach(k => { if(!(k in scaleSet)) faltan.push(k); });
   if(!tragarse) faltan.push("tragarse");
   if(!recB.hasContent()) faltan.push("lo más bonito");
   if(!recD.hasContent()) faltan.push("lo más difícil");
-  if(faltan.length && !confirm("Te faltan algunas respuestas ("+faltan.length+"). ¿Guardar así de todos modos?")) return;
+  if(faltan.length && !confirm("Te faltan algunas respuestas ("+faltan.length+"). ¿Guardar así de todos modos?")) { msg(m,"Guardado cancelado. Puedes completar las respuestas o volver a intentar.","warn"); return; }
+  msg(m,"Guardando entrada en el dispositivo…");
 
   const es = await sortedEntries();
   const last = es[es.length-1];
@@ -555,14 +561,13 @@ $("#e-save").onclick = async () => {
   // los blobs se guardan aparte del objeto descriptivo
   entry.audio_bonito = b._blob || null; delete b._blob;
   entry.audio_dificil = d._blob || null; delete d._blob;
-  try{
     await DB.put(entry);
     if(navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(()=>{});
     FLASH = "Entrada guardada ✓ Recuerda enviarla desde la pestaña <b>Enviar</b>.";
     show("home");
   }catch(err){
     msg(m, "No se pudo guardar: " + esc(err.message || err), "err");
-  }
+  } finally { btn.disabled = false; }
 };
 
 /* ---------- enviar ---------- */
